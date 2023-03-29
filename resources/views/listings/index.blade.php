@@ -6,8 +6,11 @@
     @foreach ($listings as $item)
     <x-all-cards :item="$item" />
     @endforeach
-</div>
     @else
     <h3>no Listing</h3>
     @endif
+</div>
+<div class="mt-6 p-4">
+    {{ $listings->links() }}
+</div>
 </x-layout>
