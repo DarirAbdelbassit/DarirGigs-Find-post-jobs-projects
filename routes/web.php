@@ -15,6 +15,6 @@ use App\Http\Controllers\ListingController;
 */
 
 Route::get('/', [ListingController::class,'index']);
+Route::get('/listings/create', [ ListingController::class,'create']);
+Route::post('/listings', [ListingController::class,'store']);
 Route::get('/listings/{id}', [ ListingController::class,'show']);
-// Route::get('/{tag}',[ ListingController::class,'tag']);
-

@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
 
 class Listing extends Model
 {
@@ -14,6 +13,7 @@ class Listing extends Model
      * to allow as to use filter methode
      * in the controllers
      */
+    protected $fillable=['title','company','location','description','tags','email','website'];
     public function scopeFilter($query, array $filters)
     {
         if (!empty($filters["tag"])) {
@@ -24,7 +24,6 @@ class Listing extends Model
             ->orWhere('description', 'like', '%'.  request('search').'%')
             ->orWhere('tags', 'like', '%'.  request('search').'%');
         }
-
         return $query;
     }
 }
