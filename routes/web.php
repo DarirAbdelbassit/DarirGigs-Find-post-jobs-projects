@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('listings', [
+    return view('listings.index', [
         'listings' => App\Models\Listing::all()
     ]);
 });
@@ -22,7 +22,7 @@ Route::get('/listings/{id}', function ($id) {
     if (!App\Models\Listing::find($id)) {
         abort(404);
     }
-    return view('listing', [
+    return view('listings.listing', [
         'listing' => App\Models\Listing::find($id)
     ]);
 });
