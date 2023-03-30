@@ -54,7 +54,7 @@ class ListingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
+    public function show($id)
     {
         //
         if (! Listing::find($id)) {
@@ -105,7 +105,15 @@ class ListingController extends Controller
     public function destroy(string $id)
     {
         //
-        Listing::where('id',$id)->delete();
-        return redirect('/')->with('message','Listing deleted successfully');
+        Listing::where('id', $id)->delete();
+        return redirect('/')->with('message', 'Listing deleted successfully');
+    }
+    public function manage()
+    {
+        $data = auth()->user()->listings()->get();
+        return view(
+            'listings.manage',
+            ['listings' => $data]
+        );
     }
 }

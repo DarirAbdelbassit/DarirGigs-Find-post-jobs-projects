@@ -20,6 +20,8 @@ Route::get('/', [ListingController::class,'index']);
 Route::get('/listings/create', [ ListingController::class,'create'])->middleware('auth');
 // to store a single listing
 Route::post('/listings', [ListingController::class,'store'])->middleware('auth');
+// to display manage listings page
+Route::get('/listings/mange', [ ListingController::class,'manage'])->middleware('auth');
 // to display a single listing
 Route::get('/listings/{id}', [ ListingController::class,'show'])->middleware('auth');
 // to display edit form
@@ -35,6 +37,7 @@ Route::post('/register', [UserController::class,'store'])->middleware('guest');
 // to logout
 Route::post('/logout', [UserController::class,'logout'])->middleware('auth');
 // to display login form
-Route::get('/login', [UserController::class,'login'])->name('login')->middleware('guest');;
+Route::get('/login', [UserController::class,'login'])->name('login')->middleware('guest');
 // to check login info
 Route::post('/login', [UserController::class,'loginHandler'])->middleware('guest');
+
