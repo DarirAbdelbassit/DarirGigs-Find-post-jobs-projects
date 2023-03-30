@@ -9,7 +9,7 @@
     >
         <img
             class="w-48 mr-6 mb-6"
-            src="/images/no-image.png"
+            src={{ $listing->logo ? ' /storage/'.$listing->logo : asset('/images/no-image.png') }}
             alt=""
         />
         <h3 class="text-2xl mb-2"> {{$listing->title}} </h3>
@@ -46,4 +46,10 @@
     </div>
 </div>
 </div>
+<a href="/listings/{{$listing->id}}/edit">Edit</a>
+<form method="post" action="/listings/{{$listing->id}} ">
+    @csrf
+    @method('delete')
+    <button type="submit">Delete</button>
+</form>
 </x-layout>

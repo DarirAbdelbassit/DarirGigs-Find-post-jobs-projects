@@ -43,10 +43,14 @@ class ListingController extends Controller
             'email'=>['required','email',Rule::unique('listings', 'email')],
             'website'=>'required',
         ]);
+        if ($request->hasFile('logo')) {
+            $data['logo'] = $request->file('logo')->store('logos', 'public');
+            //make folder(storage/logos) access public use : php artisan storage:link
+        }
+
         Listing::create($data);
         return redirect('/')->with('message', 'Listing created successfully');
     }
-
     /**
      * Display the specified resource.
      */
@@ -66,7 +70,11 @@ class ListingController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //to edit a listing
+        if (! Listing::find($id)) {
+            abort(404);
+        }
+        return view('listings.edit', ['item'=>Listing::find($id)]);
     }
 
     /**
@@ -75,6 +83,20 @@ class ListingController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $newData = $request->validate([
+            'title'=>'required',
+            'company'=> 'required',
+            'location'=>'required',
+            'description'=>'required',
+            'tags'=>'required',
+            'email'=> 'required' ,
+            'website'=>'required',
+        ]);
+        if ($request->hasFile('logo')) {
+            $newData['logo'] = $request->file('logo')->store('logos', 'public');
+        }
+        Listing::where('id', $id)->update($newData);
+        return back()->with('message', 'Listing updated successfully');
     }
 
     /**
@@ -83,5 +105,7 @@ class ListingController extends Controller
     public function destroy(string $id)
     {
         //
+        Listing::where('id',$id)->delete();
+        return redirect('/')->with('message','Listing deleted successfully');
     }
 }
