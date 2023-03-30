@@ -30,3 +30,11 @@ Route::put('/listings/{id}', [ ListingController::class,'update']);
 Route::delete('/listings/{id}', [ ListingController::class,'destroy']);
 // to display register form
 Route::get('/register', [UserController::class,'create']);
+// to store a single user
+Route::post('/register', [UserController::class,'store']);
+// to logout
+Route::post('/logout', [UserController::class,'logout']);
+// to display login form
+Route::get('/login', [UserController::class,'login']);
+// to check login info
+Route::post('/login', [UserController::class,'loginHandler']);
