@@ -14,7 +14,7 @@ class Listing extends Model
      * to allow as to use filter methode
      * in the controllers
      */
-    protected $fillable=['title','company','location','description','tags','email','website','logo'];
+    protected $fillable=['title','user_id','company','location','description','tags','email','website','logo'];
     public function scopeFilter($query, array $filters)
     {
         if (!empty($filters["tag"])) {

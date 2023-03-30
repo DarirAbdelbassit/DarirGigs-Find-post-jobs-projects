@@ -47,7 +47,7 @@ class ListingController extends Controller
             $data['logo'] = $request->file('logo')->store('logos', 'public');
             //make folder(storage/logos) access public use : php artisan storage:link
         }
-
+        $data['user_id'] = auth()->user()->id;
         Listing::create($data);
         return redirect('/')->with('message', 'Listing created successfully');
     }

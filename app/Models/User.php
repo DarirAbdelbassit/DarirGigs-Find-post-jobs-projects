@@ -51,3 +51,23 @@ class User extends Authenticatable
         return $this->hasMany(Listing::class, 'user_id');
     }
 }
+/*
+start working with tinker:
+start with :php artisan tinker
+then we can use the following commands:
+App\Models\User::all() // to get all users
+App\Models\User::find(1) // to get a single user
+App\Models\User::find(1)->listings // to get all listings of a single user
+App\Models\User::find(1)->listings()->create([
+    'title'=>'test title',
+    'company'=>'test company',
+    'location'=>'test location',
+    'description'=>'test description',
+    'tags'=>'test tags',
+    'email'=>'test email',
+    'website'=>'test website',
+    'logo'=>'test logo'])
+    // to create a listing for a single user
+$firstUser = App\Models\User::find(1)
+$firstUser->listings() // to get all listings of a single user
+*/
