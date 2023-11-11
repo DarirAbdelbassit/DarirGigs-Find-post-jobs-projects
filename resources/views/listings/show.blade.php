@@ -22,7 +22,7 @@
                                 {{ $listing->description }}
                             </p>
 
-                            <a href=" {{ $listing->email }} "
+                            <a href="mailto:{{ $listing->email }}"
                                 class="block bg-laravel text-white mt-6 py-2 rounded-xl hover:opacity-80"><i
                                     class="fa-solid fa-envelope"></i>
                                 Contact Employer</a>
@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <x-card class="mt-4 p-2 flex space-x-6">
+        <x-card class="mt-4 p-2 flex justify-center space-x-6">
             <a href="{{ route('listings.edit', ['id' => $listing->id]) }}">
                 <i class="fa-solid fa-pencil"></i> Edit
             </a>
