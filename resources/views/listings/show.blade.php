@@ -36,6 +36,7 @@
                 </div>
             </div>
         </div>
+        @if($listing->user_id == auth()->id())
         <x-card class="mt-4 p-2 flex justify-center space-x-6">
             <a href="{{ route('listings.edit', ['id' => $listing->id]) }}">
                 <i class="fa-solid fa-pencil"></i> Edit
@@ -46,4 +47,5 @@
                 <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
             </form>
         </x-card>
+        @endif
 </x-layout>
