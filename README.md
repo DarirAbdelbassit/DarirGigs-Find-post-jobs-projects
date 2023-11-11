@@ -16,7 +16,17 @@ DarirGigs provides a user-friendly experience for both visitors and logged-in us
 
 ## Project Screenshots
 
+![listing index](https://github.com/DarirAbdelbassit/DarirGigs-Find-post-jobs-projects/assets/85806305/dc44c529-22a3-4100-a6b3-3ea1bacf98b7)
+*Listing index*
 
+![signup form](https://github.com/DarirAbdelbassit/DarirGigs-Find-post-jobs-projects/assets/85806305/7723865c-5cfe-4d36-a8d0-5a75facab879)
+*Signup Form*
+
+![listing show](https://github.com/DarirAbdelbassit/DarirGigs-Find-post-jobs-projects/assets/85806305/8b1f8a14-fac8-407f-a044-e832d41fd9ec)
+*Listing details*
+
+![crate-listing](https://github.com/DarirAbdelbassit/DarirGigs-Find-post-jobs-projects/assets/85806305/a182e962-5c79-4aa0-b117-6e50a450945f)
+*Create a post*
 
 ## Installation
 
