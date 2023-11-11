@@ -8,22 +8,23 @@
             </header>
             <table class="w-full table-auto rounded-sm">
                 <tbody>
-                    <tr class="border-gray-300">
-                        @if (!empty($listings))
-                            @foreach ($listings as $listing)
+                    @if (!empty($listings))
+                        @foreach ($listings as $listing)
+                            <tr class="border-gray-300">
                                 <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                                    <a href="/listings/{{ $listing->id }}">
+                                    <a href="{{ route('listings.show', ['id' => $listing->id]) }}">
                                         {{ $listing->title }}
                                     </a>
                                 </td>
                                 <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                                    <a href="/listings/{{ $listing->id }}/edit"
+                                    <a href="{{ route('listings.edit', ['id' => $listing->id]) }}"
                                         class="text-blue-400 px-6 py-2 rounded-xl"><i
                                             class="fa-solid fa-pen-to-square"></i>
                                         Edit</a>
                                 </td>
                                 <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                                    <form method="post" action="/listings/{{ $listing->id }}">
+                                    <form method="post"
+                                        action="{{ route('listings.destroy', ['id' => $listing->id]) }}">
                                         @csrf
                                         @method('DELETE')
                                         <button class="text-red-600">
@@ -32,16 +33,18 @@
                                         </button>
                                     </form>
                                 </td>
-                            @endforeach
-                        @endif
-                        @if($listings->count() == 0)
+                            </tr>
+                        @endforeach
+                    @endif
+                    @if ($listings->count() == 0)
+                        <tr class="border-gray-300">
                             <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
                                 <p class="text-lg text-center">
                                     You have no gigs yet.
                                 </p>
                             </td>
-                        @endif
-                    </tr>
+                        </tr>
+                    @endif
                 </tbody>
             </table>
         </div>

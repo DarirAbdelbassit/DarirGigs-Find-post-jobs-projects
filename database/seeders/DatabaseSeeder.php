@@ -17,12 +17,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'abde@gmail.com',
         ]);
 
-        \App\Models\Listing::factory(7)->create([
+        \App\Models\Listing::factory(50)->create([
             'user_id' => $user->id
         ]);
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }

@@ -34,14 +34,14 @@ class ListingController extends Controller
     {
         //to store a listing
         $data = $request->validate([
-            'title'=>'required',
-            'company'=>['required',Rule::unique('listings', 'company')],
+            'title' => 'required',
+            'company' => ['required',Rule::unique('listings', 'company')],
             //to make sure that the company name is unique unuique('table_name','column_name')
-            'location'=>'required',
-            'description'=>'required',
-            'tags'=>'required',
-            'email'=>['required','email',Rule::unique('listings', 'email')],
-            'website'=>'required',
+            'location' => 'required',
+            'description' => 'required',
+            'tags' => 'required',
+            'email' => ['required','email',Rule::unique('listings', 'email')],
+            'website' => 'required',
         ]);
         if ($request->hasFile('logo')) {
             $data['logo'] = $request->file('logo')->store('logos', 'public');
@@ -57,7 +57,7 @@ class ListingController extends Controller
     public function show($id)
     {
         //
-        if (! Listing::find($id)) {
+        if (!Listing::find($id)) {
             abort(404);
         }
         return view('listings.show', [
@@ -71,10 +71,10 @@ class ListingController extends Controller
     public function edit(string $id)
     {
         //to edit a listing
-        if (! Listing::find($id)) {
+        if (!Listing::find($id)) {
             abort(404);
         }
-        return view('listings.edit', ['item'=>Listing::find($id)]);
+        return view('listings.edit', ['item' => Listing::find($id)]);
     }
 
     /**
@@ -84,13 +84,13 @@ class ListingController extends Controller
     {
         //
         $newData = $request->validate([
-            'title'=>'required',
-            'company'=> 'required',
-            'location'=>'required',
-            'description'=>'required',
-            'tags'=>'required',
-            'email'=> 'required' ,
-            'website'=>'required',
+            'title' => 'required',
+            'company' => 'required',
+            'location' => 'required',
+            'description' => 'required',
+            'tags' => 'required',
+            'email' => 'required' ,
+            'website' => 'required',
         ]);
         if ($request->hasFile('logo')) {
             $newData['logo'] = $request->file('logo')->store('logos', 'public');
@@ -108,12 +108,13 @@ class ListingController extends Controller
         Listing::where('id', $id)->delete();
         return redirect('/')->with('message', 'Listing deleted successfully');
     }
+
+    /**
+     * Display the user listings.
+     */
     public function manage()
     {
         $data = auth()->user()->listings()->get();
-        return view(
-            'listings.manage',
-            ['listings' => $data]
-        );
+        return view('listings.manage',['listings' => $data]);
     }
 }
